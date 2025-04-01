@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoBook - Professional Photography Booking</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar landing-nav">
+        <div class="logo">PhotoBook</div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#services">Services</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+            <a href="login.html" class="btn-primary login-btn">Login / Register</a>
+        </div>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Capture Your Perfect Moment</h1>
+            <p>Book professional photography sessions with ease. Whether it's a wedding, portrait, or special event, we've got you covered.</p>
+            <div class="hero-buttons">
+                <a href="login.html" class="btn-primary">Book Now</a>
+                <a href="#services" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="wedding.png" alt="Beautiful wedding photography" loading="lazy">
+        </div>
+    </section>
+
+    <style>
+        .hero {
+            position: relative;
+            padding: 4rem 2rem;
+            background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+            display: flex;
+            align-items: center;
+            min-height: 80vh;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('wedding.png') center/cover no-repeat;
+            z-index: -1;
+            filter: brightness(0.7);
+        }
+
+        .hero-content {
+            max-width: 600px;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-image {
+            display: none; /* Hide the separate image since we're using it as background */
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 1rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2>Why Choose Us</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>Easy Booking</h3>
+                <p>Simple and intuitive booking system to schedule your perfect photo session.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-clock"></i>
+                <h3>Real-time Availability</h3>
+                <p>Check photographer availability instantly and book your preferred time slot.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-camera"></i>
+                <h3>Professional Photographers</h3>
+                <p>Work with experienced photographers who capture your special moments.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Mobile Friendly</h3>
+                <p>Book and manage your sessions on any device, anywhere, anytime.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://th.bing.com/th/id/R.c297ceeac9b64d3d8f51db85461b3d72?rik=HO17QBsjUblJIA&riu=http%3a%2f%2fgoldcoasttipis.com.au%2fwp-content%2fuploads%2f2016%2f12%2fwedding-photography-gold-coast.jpg&ehk=YjPiiDViAI6kWt8uvHUlaO3B30X2kckpvPtCe1cevAE%3d&risl=&pid=ImgRaw&r=0" alt="Wedding Photography">
+                <h3>Wedding Photography</h3>
+                <p>Capture your special day with our professional wedding photography services.</p>
+                <a href="login.html" class="btn-primary">Book Now</a>
+            </div>
+            <div class="service-card">
+                <img src="https://webneel.com/daily/sites/default/files/images/daily/05-2018/portrait-photography-by-dennis-drozhzhin.jpg" alt="Portrait Photography">
+                <h3>Portrait Sessions</h3>
+                <p>Professional portraits for individuals, families, and corporate needs.</p>
+                <a href="login.html" class="btn-primary">Book Now</a>
+            </div>
+            <div class="service-card">
+                <img src="https://media.licdn.com/dms/image/C5612AQH0tAY3uxydJg/article-cover_image-shrink_600_2000/0/1520197530054?e=2147483647&v=beta&t=zX6aYFU7dB1hunljfsutwNVfIFW_5D7LwkBJd5McA9Y" alt="Event Photography">
+                <h3>Event Coverage</h3>
+                <p>Comprehensive photography coverage for all types of events.</p>
+                <a href="login.html" class="btn-primary">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-image">
+                    <img src="https://business.okstate.edu/site-files/sarah-johnson-profile-headshot.jpg" alt="Client">
+                </div>
+                <p>"Amazing experience! The booking process was smooth, and the photographer was fantastic."</p>
+                <h4>Sarah Johnson</h4>
+                <span>Wedding Photography</span>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-image">
+                    <img src="https://th.bing.com/th?id=OIF.vgt7fiB7bLs%2bb1rU2ujw1g&rs=1&pid=ImgDetMain" alt="Client">
+                </div>
+                <p>"Professional service from start to finish. Highly recommend their portrait sessions!"</p>
+                <h4>Michael Brown</h4>
+                <span>Portrait Session</span>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-image">
+                    <img src="https://yt3.ggpht.com/ytc/AMLnZu-0NOQn8gOLoyvO-9O-dXGeN0eeKxrBNlvcmWLPdA=s900-c-k-c0x00ffffff-no-rj" alt="Client">
+                </div>
+                <p>"The event coverage was perfect. They captured every important moment beautifully."</p>
+                <h4>Emily Davis</h4>
+                <span>Corporate Event</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Blk 18a lot 41 England Street<br>San Francisco, General Trias</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <p>+64 9760029750</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>photobook@gmail.com</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn-primary" id="sendMessageBtn">
+                    <i class="fas fa-lock" id="lockIcon" style="margin-right: 8px;"></i>
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>PhotoBook</h3>
+                <p>Professional photography booking made simple.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#features">Features</a>
+                <a href="#services">Services</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="login.html">Wedding Photography</a>
+                <a href="login.html">Portrait Sessions</a>
+                <a href="login.html">Event Coverage</a>
+                <a href="login.html">Family Sessions</a>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Your email" required>
+                    <button type="submit" class="btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PhotoBook. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/auth.js"></script>
+    <script>
+        // Check if user is already logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = AuthManager.getCurrentUser();
+            if (user) {
+                // Update login button to show dashboard
+                const loginBtn = document.querySelector('.login-btn');
+                loginBtn.textContent = 'My Dashboard';
+                loginBtn.href = 'dashboard.html';
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        const nav = document.querySelector('.landing-nav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-links') && !e.target.closest('.mobile-menu-btn')) {
+                navLinks.classList.remove('show');
+            }
+        });
+
+        // Change navbar background on scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.style.color = 'var(--text-color)';
+                });
+            } else {
+                nav.classList.remove('scrolled');
+                document.querySelectorAll('.nav-links a:not(.btn-primary)').forEach(link => {
+                    link.style.color = 'white';
+                });
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const headerOffset = 80;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu after clicking
+                        navLinks.classList.remove('show');
+                    }
+                }
+            });
+        });
+
+        // Handle contact form submission
+        const contactForm = document.querySelector('.contact-form');
+        const sendMessageBtn = document.getElementById('sendMessageBtn');
+        const lockIcon = document.getElementById('lockIcon');
+
+        function updateSendButton() {
+            const isLoggedIn = AuthManager.isLoggedIn();
+            if (!isLoggedIn) {
+                sendMessageBtn.style.opacity = '0.7';
+                sendMessageBtn.style.cursor = 'not-allowed';
+                lockIcon.style.display = 'inline-block';
+                
+                // Add click handler for not logged in
+                sendMessageBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Please log in to send a message');
+                    window.location.href = 'login.html';
+                });
+            } else {
+                sendMessageBtn.style.opacity = '1';
+                sendMessageBtn.style.cursor = 'pointer';
+                lockIcon.style.display = 'none';
+                
+                // Add normal form submission for logged in users
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Show success message
+                    alert('Message sent successfully!');
+                    contactForm.reset();
+                });
+            }
+        }
+
+        // Initial check
+        updateSendButton();
+
+        // Handle newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input[type="email"]').value;
+            
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'success-message';
+            successMessage.innerHTML = `
+                <div class="success-content">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Successfully Subscribed!</h3>
+                    <p>Thank you for subscribing to our newsletter!</p>
+                    <button onclick="this.parentElement.parentElement.remove();" class="btn-primary">
+                        Close
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(successMessage);
+            
+            newsletterForm.reset();
+        });
+
+        // Initialize navbar state on page load
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        }
+
+        // Lazy load images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            lazyImages.forEach(img => {
+                img.setAttribute('loading', 'lazy');
+            });
+        });
+    </script>
+</body>
+</html> 

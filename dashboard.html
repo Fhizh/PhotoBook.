@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoBook - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">PhotoBook</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#calendar">Calendar</a>
+            <a href="#bookings">My Bookings</a>
+            <a href="#profile">Profile</a>
+            <a href="admin.html" id="adminLink" class="admin-link hidden">Admin Panel</a>
+            <div class="user-menu">
+                <span class="user-email"></span>
+                <button onclick="AuthManager.logout()" class="btn-secondary">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard-container">
+        <!-- Home Section -->
+        <section id="home" class="dashboard-section">
+            <div class="welcome-section">
+                <h1>Welcome to Your Dashboard</h1>
+                <p class="welcome-message">Hello, <span class="user-name"></span>!</p>
+            </div>
+            
+            <div class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="action-cards">
+                    <div class="action-card" onclick="showSection('calendar')">
+                        <i class="fas fa-calendar-plus"></i>
+                        <h3>Book a Session</h3>
+                        <p>Schedule a new photography session</p>
+                    </div>
+                    <div class="action-card" onclick="showSection('bookings')">
+                        <i class="fas fa-list-alt"></i>
+                        <h3>View Bookings</h3>
+                        <p>Check your upcoming sessions</p>
+                    </div>
+                    <div class="action-card" onclick="showSection('profile')">
+                        <i class="fas fa-user-edit"></i>
+                        <h3>Update Profile</h3>
+                        <p>Manage your account details</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-stats">
+                <h2>Your Activity</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-calendar-check"></i>
+                        <h3>Upcoming Sessions</h3>
+                        <p class="stat-number upcoming-sessions">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Hours Booked</h3>
+                        <p class="stat-number total-hours">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-history"></i>
+                        <h3>Past Sessions</h3>
+                        <p class="stat-number past-sessions">0</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calendar Section -->
+        <section id="calendar" class="dashboard-section hidden">
+            <h2>Book a Session</h2>
+            <div class="booking-layout">
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                        <h3 class="current-month"></h3>
+                        <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div id="calendarGrid" class="calendar-grid">
+                        <!-- Calendar will be inserted here by JavaScript -->
+                    </div>
+                    <div class="time-slots-container hidden">
+                        <h3>Available Time Slots</h3>
+                        <div class="time-slots">
+                            <!-- Time slots will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <form id="photographyBookingForm" class="booking-form">
+                    <div class="form-group">
+                        <label for="sessionType">Session Type</label>
+                        <select name="sessionType" id="sessionType" required>
+                            <option value="">Select a session type</option>
+                            <option value="wedding">Wedding Photography (4-8 hours)</option>
+                            <option value="portrait">Portrait Session (1-2 hours)</option>
+                            <option value="event">Event Coverage (2-6 hours)</option>
+                            <option value="family">Family Session (1-3 hours)</option>
+                        </select>
+                        <small class="helper-text">Select the type of photography session you need</small>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Selected Date</label>
+                            <input type="date" name="date" id="date" readonly required>
+                            <small class="helper-text">Click on a date in the calendar</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Time</label>
+                            <input type="time" name="time" id="time" required>
+                            <small class="helper-text">Enter your preferred time (24-hour format)</small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="duration">Duration (hours)</label>
+                            <div class="duration-control">
+                                <button type="button" class="btn-circle" onclick="decrementDuration()">-</button>
+                                <input type="number" name="duration" id="duration" min="1" max="8" value="1" required readonly>
+                                <button type="button" class="btn-circle" onclick="incrementDuration()">+</button>
+                            </div>
+                            <small class="helper-text duration-hint">Recommended: 1-2 hours for portraits</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Number of People</label>
+                            <input type="number" name="guests" id="guests" min="1" max="100" value="1" required>
+                            <small class="helper-text">Number of people to be photographed</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Preferred Location</label>
+                        <select name="location" id="location" required>
+                            <option value="studio">Studio</option>
+                            <option value="outdoor">Outdoor Location</option>
+                            <option value="client">Client's Location</option>
+                        </select>
+                        <small class="helper-text">Where would you like the session to take place?</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Special Requirements</label>
+                        <textarea name="notes" id="notes" rows="4" style="resize: none; height: 100px;" placeholder="Any special requests or requirements?"></textarea>
+                    </div>
+                    <div class="price-summary">
+                        <div class="price-row">
+                            <span>Base Price:</span>
+                            <span class="base-price">$150/hour</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Duration:</span>
+                            <span class="duration-price">$150</span>
+                        </div>
+                        <div class="price-row total">
+                            <span>Estimated Total:</span>
+                            <span class="total-price">$150</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">Confirm Booking</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- My Bookings Section -->
+        <section id="bookings" class="dashboard-section hidden">
+            <h2>My Bookings</h2>
+            
+            <div class="bookings-filters">
+                <div class="filter-group">
+                    <label for="bookingStatusFilter">Status</label>
+                    <select id="bookingStatusFilter">
+                        <option value="all">All Bookings</option>
+                        <option value="pending">Upcoming</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="bookingDateFilter">Sort By</label>
+                    <select id="bookingDateFilter">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="bookings-tabs">
+                <button class="booking-tab active" data-status="pending">
+                    <i class="fas fa-calendar-alt"></i>
+                    Upcoming
+                    <span class="booking-count upcoming-count">0</span>
+                </button>
+                <button class="booking-tab" data-status="completed">
+                    <i class="fas fa-check-circle"></i>
+                    Completed
+                    <span class="booking-count completed-count">0</span>
+                </button>
+                <button class="booking-tab" data-status="cancelled">
+                    <i class="fas fa-times-circle"></i>
+                    Cancelled
+                    <span class="booking-count cancelled-count">0</span>
+                </button>
+            </div>
+
+            <div class="bookings-container">
+                <div class="bookings-list">
+                    <!-- Bookings will be inserted here by JavaScript -->
+                </div>
+                <div class="no-bookings hidden">
+                    <i class="fas fa-calendar-times"></i>
+                    <h3>No Bookings Found</h3>
+                    <p>You haven't made any bookings yet.</p>
+                    <button class="btn-primary" onclick="showSection('calendar')">Book a Session</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="dashboard-section hidden">
+            <h2>My Profile</h2>
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="profileName">Full Name</label>
+                    <input type="text" id="profileName" required>
+                </div>
+                <div class="form-group">
+                    <label for="profileEmail">Email</label>
+                    <input type="email" id="profileEmail" required readonly>
+                </div>
+                <div class="form-group">
+                    <label for="profilePhone">Phone</label>
+                    <input type="tel" id="profilePhone" required>
+                </div>
+                <button type="submit" class="btn-primary">Update Profile</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/bookings.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 
